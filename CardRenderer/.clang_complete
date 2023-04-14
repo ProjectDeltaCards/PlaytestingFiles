@@ -1,0 +1,6 @@
+-std=c++20
+-Ithirdparty/godot-cpp/godot-headers/
+-Ithirdparty/godot-cpp/include/
+-Ithirdparty/godot-cpp/gen/include/
+-Isrc/
+-Isrc/godot-link
