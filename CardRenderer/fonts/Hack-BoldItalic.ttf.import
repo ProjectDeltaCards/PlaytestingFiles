@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://qyc0adasgecu"
+uid="uid://ctmuy8jfsocog"
 path="res://.godot/imported/Hack-BoldItalic.ttf-e6cc0b1f2878ed7e1e84fcf9b3ca59a5.fontdata"
 
 [deps]
@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/Hack-BoldItalic.ttf-e6cc0b1f2878ed7e1e84fcf9b
 
 Rendering=null
 antialiasing=1
-generate_mipmaps=true
+generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
@@ -24,7 +24,7 @@ hinting=1
 subpixel_positioning=1
 oversampling=0.0
 Fallbacks=null
-fallbacks=[Resource("res://fonts/NotoSansJP-Regular.otf")]
+fallbacks=[]
 Compress=null
 compress=true
 preload=[]

@@ -59,8 +59,8 @@ func parseCSVLine(line: String):
 	var end = start
 	while start < line.length() and (first or start > 0):
 		first = false
-		end = line.find("\",", start)
-		if end < 0: end = line.find(",", start)
+		end = line.find(",", start)
+		if end < 0: end = line.find("\",", start)
 		
 		data.append(line.substr(start, end-start).lstrip("\",").strip_edges())
 		start = end + 1
@@ -73,7 +73,7 @@ func processCards(indata):
 		if card == {}: continue
 		if card["slot"].is_empty(): continue
 		if card["slot"] in ["R", "U", "C"]: continue
-		if not card.has("has ph"): continue
+		# if not card.has("has ph"): card["has ph"] = "False"
 		
 		card["has ph"] = card["has ph"] == "True"
 		card["effectiveness"] = card["effectiveness"].to_int()
@@ -83,10 +83,11 @@ func processCards(indata):
 		card["subtype size"] = card["subtype size"].to_int()
 		card["renowned"] = "R." in card["type"] or card["type"] == "Commander"
 		
+		card["name"] = card["name"].replace("\u066B", ",")
 		card["subtype"] = card["subtype"].replace("<", "[").replace(">", "]")
 		card["iconified cost"] = card["iconified cost"].replace("\\n", "\n")
 		card["icost"] = card["iconified cost"]
-		card["iconified rules"] = card["iconified rules"].replace("\\n", "\n").replace("\"\"", "\"")
+		card["iconified rules"] = card["iconified rules"].replace("\\n", "\n").replace("\"\"", "\"").replace("\u066B", ",")
 		card["irules"] = card["iconified rules"]
 		
 		if not card.has("setted slot"): card["setted slot"] = "err_" + card["slot"]
