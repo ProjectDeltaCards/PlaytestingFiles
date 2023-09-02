@@ -14,8 +14,8 @@ dest_files=["res://.godot/imported/NotoSansJP-Thin.otf-c11dab6c0a6969d4595a1f0e5
 
 Rendering=null
 antialiasing=1
-generate_mipmaps=false
-multichannel_signed_distance_field=false
+generate_mipmaps=true
+multichannel_signed_distance_field=true
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true

@@ -17,7 +17,6 @@ func _ready():
 			
 			http.connect("request_completed", _on_request_completed)
 			
-			print(sheet)
 			http.request(sheet)
 		else:
 			var file = FileAccess.open(sheet, FileAccess.READ)
@@ -41,7 +40,6 @@ func parseRawData(rawData):
 	
 	var lines = rawData.split("\n")
 	var names = parseCSVLine(lines[0]).map(func(name): return name.replace(" (0-4 = common, 5-8 = uncommon, 9-10 = rare)", "").to_lower())
-	
 	for i in range(1, lines.size()):
 		var data = {}
 		var line = parseCSVLine(lines[i])
@@ -59,23 +57,33 @@ func parseCSVLine(line: String):
 	var end = start
 	while start < line.length() and (first or start > 0):
 		first = false
-		end = line.find(",", start)
-		if end < 0: end = line.find("\",", start)
+		if line[start] == '"':
+			end = line.find("\",", start)
+		else: end = line.find(",", start)
 		
 		data.append(line.substr(start, end-start).lstrip("\",").strip_edges())
+		if line[start] == '"': end += 1
 		start = end + 1
 		
 	return data
 	
 func processCards(indata):
+	var costRegex = RegEx.new()
+	costRegex.compile("([ROYGBPXZC_]|1?[0-9])")
+	var symbolExtractRegex = RegEx.new()
+	symbolExtractRegex.compile("(\\[([ROYGBPTQUXZC_]|1?[0-9])\\])")
+	var parenthesizedExtractRegex = RegEx.new()
+	parenthesizedExtractRegex.compile("(\\([\\s\\S]*?\\))")
+	
 	var outdata = []
 	for card in indata:
 		if card == {}: continue
 		if card["slot"].is_empty(): continue
 		if card["slot"] in ["R", "U", "C"]: continue
+		if card["slot"] == card["name"]: continue # Skip over any dummy slots!
 		# if not card.has("has ph"): card["has ph"] = "False"
 		
-		card["has ph"] = card["has ph"] == "True"
+		card["has ph"] = !card["health"].strip_edges().is_empty()
 		card["effectiveness"] = card["effectiveness"].to_int()
 		card["attack power"] = card["attack power"].to_int()
 		card["health"] = card["health"].to_int()
@@ -85,12 +93,33 @@ func processCards(indata):
 		
 		card["name"] = card["name"].replace("\u066B", ",")
 		card["subtype"] = card["subtype"].replace("<", "[").replace(">", "]")
+		card["iconified cost"] = costRegex.sub(card["cost"], "[img=119]res://textures/icons/$0.png[/img]\n", true).strip_edges()
 		card["iconified cost"] = card["iconified cost"].replace("\\n", "\n")
 		card["icost"] = card["iconified cost"]
+
+		card["iconified rules"] = parenthesizedExtractRegex.sub(
+			symbolExtractRegex.sub(card["rules"], "[img=45]res://textures/icons/$2.png[/img]", true).replace("--","—").replace("->","•").replace("~@",\
+				"<i>" + card["name"].split(",")[0] + "</i>"\
+			).replace("~", "<i>" + card["name"] + "</i>"),\
+		"[i][color=#34343A]$0[/color][/i]", true).replace("<", "[").replace(">", "]").replace("[/p][p]", "[font_size=15]\n\n[/font_size]").replace("[br/]", "\n")
 		card["iconified rules"] = card["iconified rules"].replace("\\n", "\n").replace("\"\"", "\"").replace("\u066B", ",")
 		card["irules"] = card["iconified rules"]
 		
-		if not card.has("setted slot"): card["setted slot"] = "err_" + card["slot"]
+		if "#NAME" in card["color calculator"]:
+			card["color calculator"] = ""
+			if "R" in card["cost"]: card["color calculator"] += " Red"
+			if "O" in card["cost"]: card["color calculator"] += " Orange"
+			if "Y" in card["cost"]: card["color calculator"] += " Yellow"
+			if "G" in card["cost"]: card["color calculator"] += " Green"
+			if "B" in card["cost"]: card["color calculator"] += " Blue"
+			if "P" in card["cost"]: card["color calculator"] += " Purple"
+		
+		if "#NAME" in card["color"]:
+			var colors = card["color calculator"].strip_edges().split(" ")
+			if colors.size() == 1: card["color"] = colors[0]
+			else: card["color"] = "Multicolor"
+		
+		if not card.has("setted slot"): card["setted slot"] = "ERR_" + card["slot"]
 		
 		outdata.append(card)
 	return outdata

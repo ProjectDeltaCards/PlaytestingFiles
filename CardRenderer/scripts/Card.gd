@@ -2,7 +2,7 @@ extends Control
 
 var settedSlot = "INVALID";
 
-@onready var sheetsData = $"../../GoogleSheetsData"
+@onready var sheetsData = $"../../SheetsData"
 
 enum CardColor {
 	Generic,
@@ -65,7 +65,7 @@ func updateCard(index = 0):
 	settedSlot = card["setted slot"] if card.has("setted slot") else card["slot"]
 
 	$"Name".setSizedText(card["name"])
-	$"Cost".text = card["icost"]
+	$"Cost".text = "[right]" + card["icost"]
 	updateRangedIcon(card)
 	$"Type".text = card["type"]
 	$"SubtypeContainer/Subtype".setSizedText(card["subtype"])
