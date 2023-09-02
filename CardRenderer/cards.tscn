@@ -1,0 +1,268 @@
+[gd_scene load_steps=21 format=3 uid="uid://df2sspr31xg8x"]
+
+[ext_resource type="Script" path="res://scripts/GoogleSheetsData.gd" id="1_3f7qm"]
+[ext_resource type="Texture2D" uid="uid://ddog7crfh1s8d" path="res://textures/CARD.png" id="2_i7dll"]
+[ext_resource type="Script" path="res://scripts/Card.gd" id="2_l618c"]
+[ext_resource type="Texture2D" uid="uid://ch0a3fafxhtpj" path="res://textures/generic/1.png" id="3_101sj"]
+[ext_resource type="Texture2D" uid="uid://ds2k1miob1umv" path="res://textures/generic/renowned2.png" id="4_5qqxb"]
+[ext_resource type="Texture2D" uid="uid://cq153yl8dpmc" path="res://textures/generic/3.png" id="5_ldsmp"]
+[ext_resource type="Texture2D" uid="uid://dkm616gttto4t" path="res://textures/generic/4.png" id="6_tan50"]
+[ext_resource type="Texture2D" uid="uid://cynxdnj1tmph4" path="res://textures/generic/5.png" id="7_1lngl"]
+[ext_resource type="FontFile" uid="uid://cu2aun03gysyl" path="res://fonts/ethnocentric rg.otf" id="8_n3s1j"]
+[ext_resource type="Script" path="res://scripts/dynamicFontSizeLabel.gd" id="9_3vhxw"]
+[ext_resource type="Script" path="res://scripts/dynamicFontSizeRichTextLabel.gd" id="10_nj6fg"]
+[ext_resource type="Theme" uid="uid://6aabg5xmqjnc" path="res://fonts/Hack.RTL.theme" id="10_ogxrk"]
+[ext_resource type="FontFile" uid="uid://buvcsy3g31cn1" path="res://fonts/Hack-Regular.ttf" id="11_4ucpm"]
+[ext_resource type="FontFile" uid="uid://l3ev7vgvf75p" path="res://fonts/ethnocentric rg it.otf" id="11_irf5d"]
+[ext_resource type="Texture2D" uid="uid://bumst2825nm5e" path="res://textures/PH.png" id="15_1iv8o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ev7on"]
+font = ExtResource("8_n3s1j")
+font_size = 60
+font_color = Color(0.207843, 0.207843, 0.231373, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_25qap"]
+font = ExtResource("11_irf5d")
+font_size = 50
+font_color = Color(0.207843, 0.207843, 0.231373, 1)
+
+[sub_resource type="Theme" id="Theme_snbqg"]
+default_font = ExtResource("8_n3s1j")
+default_font_size = 45
+RichTextLabel/colors/default_color = Color(0.203922, 0.203922, 0.227451, 1)
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/font_sizes/bold_font_size = 45
+RichTextLabel/font_sizes/bold_italics_font_size = 45
+RichTextLabel/font_sizes/italics_font_size = 45
+RichTextLabel/font_sizes/mono_font_size = 45
+RichTextLabel/font_sizes/normal_font_size = 45
+RichTextLabel/fonts/bold_font = ExtResource("8_n3s1j")
+RichTextLabel/fonts/bold_italics_font = ExtResource("11_irf5d")
+RichTextLabel/fonts/italics_font = ExtResource("11_irf5d")
+RichTextLabel/fonts/mono_font = ExtResource("11_4ucpm")
+RichTextLabel/fonts/normal_font = ExtResource("8_n3s1j")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fcx0h"]
+font = ExtResource("8_n3s1j")
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_6a5q3"]
+font = ExtResource("8_n3s1j")
+font_size = 60
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+offset_left = -7.0
+offset_top = -815.0
+offset_right = 1337.0
+offset_bottom = 1057.0
+
+[node name="GoogleSheetsData" type="Node" parent="."]
+script = ExtResource("1_3f7qm")
+sheets = PackedStringArray("res://databases/Rising Tensions.xlsx.csv", "res://databases/Rising Spirits.xlsx.csv")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+screen_space_aa = 1
+size = Vector2i(1344, 1872)
+render_target_update_mode = 4
+
+[node name="Card" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_l618c")
+
+[node name="Card" type="Sprite2D" parent="SubViewport/Card"]
+texture = ExtResource("2_i7dll")
+centered = false
+
+[node name="Color1" type="Sprite2D" parent="SubViewport/Card"]
+texture = ExtResource("3_101sj")
+centered = false
+
+[node name="Color2" type="Sprite2D" parent="SubViewport/Card"]
+texture = ExtResource("4_5qqxb")
+centered = false
+
+[node name="Color3" type="Sprite2D" parent="SubViewport/Card"]
+texture = ExtResource("5_ldsmp")
+centered = false
+
+[node name="Color4" type="Sprite2D" parent="SubViewport/Card"]
+texture = ExtResource("6_tan50")
+centered = false
+
+[node name="Name" type="Label" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 125.0
+offset_right = 1183.0
+offset_bottom = 218.0
+size_flags_horizontal = 0
+text = "L.O.K.I.O"
+label_settings = SubResource("LabelSettings_ev7on")
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 2
+script = ExtResource("9_3vhxw")
+
+[node name="Cost" type="RichTextLabel" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 89.0
+offset_right = 270.0
+offset_bottom = 815.0
+bbcode_enabled = true
+text = "[right][img=119]res://textures/icons/R.png[/img]
+[img=119]res://textures/icons/O.png[/img]
+[img=119]res://textures/icons/Y.png[/img]
+[img=119]res://textures/icons/G.png[/img]
+[img=119]res://textures/icons/B.png[/img]
+[img=119]res://textures/icons/P.png[/img]"
+scroll_active = false
+threaded = true
+
+[node name="Range" type="RichTextLabel" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 795.0
+offset_right = 256.0
+offset_bottom = 1021.0
+bbcode_enabled = true
+text = "[img=220]res://textures/icons/Formation.png[/img]"
+scroll_active = false
+threaded = true
+
+[node name="Type" type="Label" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 824.0
+offset_right = 938.0
+offset_bottom = 890.0
+size_flags_horizontal = 0
+text = "COMMANDER"
+label_settings = SubResource("LabelSettings_25qap")
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 1
+
+[node name="SubtypeContainer" type="ScrollContainer" parent="SubViewport/Card"]
+clip_contents = false
+layout_mode = 0
+offset_left = 260.0
+offset_top = 885.0
+offset_right = 1019.0
+offset_bottom = 968.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="Subtype" type="RichTextLabel" parent="SubViewport/Card/SubtypeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = SubResource("Theme_snbqg")
+bbcode_enabled = true
+text = "Transient"
+fit_content = true
+scroll_active = false
+script = ExtResource("10_nj6fg")
+targetFontSize = 45
+minFontSize = 30
+
+[node name="Effectiveness" type="Label" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 1061.0
+offset_top = 873.0
+offset_right = 1168.0
+offset_bottom = 993.0
+size_flags_horizontal = 0
+text = "10"
+label_settings = SubResource("LabelSettings_fcx0h")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+max_lines_visible = 2
+
+[node name="RulesContainer" type="ScrollContainer" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 990.0
+offset_right = 998.0
+offset_bottom = 1723.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="Rules" type="RichTextLabel" parent="SubViewport/Card/RulesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("10_ogxrk")
+bbcode_enabled = true
+text = "[center][u]Transient[/u] [i][color=#34343A][font_size=40](If [i]Bullet[/i] would enter your discard, instead remove it from the game.)[/font_size][/color][/i][font_size=15]
+
+[/font_size][/center][img=45]res://textures/icons/T.png[/img], [u]Forfeit[/u] [i][color=#34343A][font_size=40](Put the specified card into its owner's discard.)[/font_size][/color][/i] [i]Bullet[/i]: [i]Bullet[/i] deals 2 damage to an asset or player of your choice.[font_size=15]
+
+[/font_size][img=45]res://textures/icons/T.png[/img], [u]Forfeit[/u] [i]Bullet[/i]: Choose a gun you control; restore 1 ammo to it.
+"
+fit_content = true
+scroll_active = false
+threaded = true
+script = ExtResource("10_nj6fg")
+targetFontSize = 40
+metadata/_edit_layout_mode = 1
+
+[node name="PH" type="Sprite2D" parent="SubViewport/Card"]
+texture = ExtResource("15_1iv8o")
+centered = false
+
+[node name="Color5" type="Sprite2D" parent="SubViewport/Card"]
+texture = ExtResource("7_1lngl")
+centered = false
+
+[node name="Range2" type="RichTextLabel" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 1069.0
+offset_top = 1451.0
+offset_right = 1186.0
+offset_bottom = 1577.0
+bbcode_enabled = true
+text = "[img=122]res://textures/icons/Formation.png[/img]"
+scroll_active = false
+threaded = true
+
+[node name="Attack Power" type="Label" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 1077.0
+offset_top = 1577.0
+offset_right = 1184.0
+offset_bottom = 1796.0
+size_flags_horizontal = 0
+text = "999"
+label_settings = SubResource("LabelSettings_6a5q3")
+horizontal_alignment = 1
+autowrap_mode = 1
+text_overrun_behavior = 1
+uppercase = true
+max_lines_visible = 3
+
+[node name="Health" type="Label" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = 1215.0
+offset_top = 1577.0
+offset_right = 1322.0
+offset_bottom = 1796.0
+size_flags_horizontal = 0
+text = "999"
+label_settings = SubResource("LabelSettings_6a5q3")
+horizontal_alignment = 1
+autowrap_mode = 1
+text_overrun_behavior = 1
+uppercase = true
+max_lines_visible = 3
