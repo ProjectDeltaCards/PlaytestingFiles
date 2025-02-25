@@ -1,16 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://df2sspr31xg8x"]
+[gd_scene load_steps=23 format=3 uid="uid://df2sspr31xg8x"]
 
-[ext_resource type="Script" path="res://scripts/SheetsData.gd" id="1_sklx3"]
+[ext_resource type="Script" uid="uid://b270umdc5wiv6" path="res://scripts/SheetsData.gd" id="1_sklx3"]
 [ext_resource type="Texture2D" uid="uid://ddog7crfh1s8d" path="res://textures/CARD.png" id="2_i7dll"]
-[ext_resource type="Script" path="res://scripts/Card.gd" id="2_l618c"]
+[ext_resource type="Script" uid="uid://c1poeis54b3t5" path="res://scripts/Card.gd" id="2_l618c"]
 [ext_resource type="Texture2D" uid="uid://ch0a3fafxhtpj" path="res://textures/generic/1.png" id="3_101sj"]
+[ext_resource type="Texture2D" uid="uid://cbnpc8psa2u4o" path="res://textures/MASK.png" id="3_yeqbf"]
 [ext_resource type="Texture2D" uid="uid://ds2k1miob1umv" path="res://textures/generic/renowned2.png" id="4_5qqxb"]
+[ext_resource type="Texture2D" uid="uid://t7p4a15bvo0a" path="res://textures/placeholder.png" id="4_wonty"]
 [ext_resource type="Texture2D" uid="uid://cq153yl8dpmc" path="res://textures/generic/3.png" id="5_ldsmp"]
 [ext_resource type="Texture2D" uid="uid://dkm616gttto4t" path="res://textures/generic/4.png" id="6_tan50"]
 [ext_resource type="Texture2D" uid="uid://cynxdnj1tmph4" path="res://textures/generic/5.png" id="7_1lngl"]
 [ext_resource type="FontFile" uid="uid://cu2aun03gysyl" path="res://fonts/ethnocentric rg.otf" id="8_n3s1j"]
-[ext_resource type="Script" path="res://scripts/dynamicFontSizeLabel.gd" id="9_3vhxw"]
-[ext_resource type="Script" path="res://scripts/dynamicFontSizeRichTextLabel.gd" id="10_nj6fg"]
+[ext_resource type="Script" uid="uid://3jl08yvsuor6" path="res://scripts/dynamicFontSizeLabel.gd" id="9_3vhxw"]
+[ext_resource type="Script" uid="uid://c5hb3ibe3g8n6" path="res://scripts/dynamicFontSizeRichTextLabel.gd" id="10_nj6fg"]
 [ext_resource type="Theme" uid="uid://6aabg5xmqjnc" path="res://fonts/Hack.RTL.theme" id="10_ogxrk"]
 [ext_resource type="FontFile" uid="uid://ff46xvq8y176" path="res://fonts/Hack-Regular.ttf" id="11_4ucpm"]
 [ext_resource type="FontFile" uid="uid://l3ev7vgvf75p" path="res://fonts/ethnocentric rg it.otf" id="11_irf5d"]
@@ -60,7 +62,7 @@ offset_bottom = 1057.0
 
 [node name="SheetsData" type="Node" parent="."]
 script = ExtResource("1_sklx3")
-sheets = PackedStringArray("res://databases/Rising Tensions.xlsx.csv", "res://databases/Rising Spirits.xlsx.csv")
+sheets = PackedStringArray("res://databases/Set 0 - Civilians.csv", "res://databases/Set 1 - Enigma.csv", "res://databases/Set 2 - Hana.csv")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -75,6 +77,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_l618c")
+
+[node name="Mask" type="Sprite2D" parent="SubViewport/Card"]
+clip_children = 1
+texture = ExtResource("3_yeqbf")
+centered = false
+
+[node name="Art" type="Sprite2D" parent="SubViewport/Card/Mask"]
+position = Vector2(734.763, 531)
+scale = Vector2(0.262963, 0.248387)
+texture = ExtResource("4_wonty")
 
 [node name="Card" type="Sprite2D" parent="SubViewport/Card"]
 texture = ExtResource("2_i7dll")
@@ -116,6 +128,22 @@ layout_mode = 0
 offset_left = 32.0
 offset_top = 89.0
 offset_right = 270.0
+offset_bottom = 815.0
+bbcode_enabled = true
+text = "[right][img=119]res://textures/icons/R.png[/img]
+[img=119]res://textures/icons/O.png[/img]
+[img=119]res://textures/icons/Y.png[/img]
+[img=119]res://textures/icons/G.png[/img]
+[img=119]res://textures/icons/B.png[/img]
+[img=119]res://textures/icons/P.png[/img]"
+scroll_active = false
+threaded = true
+
+[node name="Cost2" type="RichTextLabel" parent="SubViewport/Card"]
+layout_mode = 0
+offset_left = -94.0
+offset_top = 89.0
+offset_right = 144.0
 offset_bottom = 815.0
 bbcode_enabled = true
 text = "[right][img=119]res://textures/icons/R.png[/img]
