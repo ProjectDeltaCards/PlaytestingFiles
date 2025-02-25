@@ -65,7 +65,13 @@ func updateCard(index = 0):
 	settedSlot = card["setted slot"] if card.has("setted slot") else card["slot"]
 
 	$"Name".setSizedText(card["name"])
-	$"Cost".text = "[right]" + card["icost"]
+	if not "\n\n" in card["icost"]:
+		$"Cost".text = "[right]" + "]".join(card["icost"].split("]").slice(0, 12))
+		if not $"Cost".text.ends_with("]"): $"Cost".text += "]"
+		$"Cost2".text = "[right]" + "]".join(card["icost"].split("]").slice(12, 24))
+	else: 
+		$"Cost".text = "[right]" + card["icost"].split("\n\n")[0]
+		$"Cost2".text = "[right]" + card["icost"].split("\n\n")[1]
 	updateRangedIcon(card)
 	$"Type".text = card["type"]
 	$"SubtypeContainer/Subtype".setSizedText(card["subtype"])
@@ -74,9 +80,9 @@ func updateCard(index = 0):
 	rules.text = card["irules"]
 
 	$"PH".visible = card["has ph"]
-	$"Attack Power".text = String.num(card["attack power"])
+	$"Attack Power".text = String.num_uint64(card["attack power"])
 	$"Attack Power".visible = card["has ph"]
-	$"Health".text = String.num(card["health"])
+	$"Health".text = String.num_uint64(card["health"])
 	$"Health".visible = card["has ph"]
 
 	updateColors(card)
@@ -99,7 +105,7 @@ func updateEffectiveness(card):
 	if effectiveness >= 5: color = Color("#999969")
 	if effectiveness >= 9: color = Color("#9A4E4F")
 
-	node.text = String.num(effectiveness)
+	node.text = String.num_uint64(effectiveness)
 	node.label_settings.font_color = color
 
 func updateRangedIcon(card):
@@ -116,12 +122,12 @@ func updateRangedIcon(card):
 
 func updateColors(card):
 	var colors = []
-	if "Red" in card["color calculator"]: colors.append(CardColor.Red)
-	if "Orange" in card["color calculator"]: colors.append(CardColor.Orange)
-	if "Yellow" in card["color calculator"]: colors.append(CardColor.Yellow)
-	if "Green" in card["color calculator"]: colors.append(CardColor.Green)
-	if "Blue" in card["color calculator"]: colors.append(CardColor.Blue)
-	if "Purple" in card["color calculator"]: colors.append(CardColor.Purple)
+	if "Entropy" in card["color calculator"]: colors.append(CardColor.Red)
+	if "Unrest" in card["color calculator"]: colors.append(CardColor.Orange)
+	if "Emotion" in card["color calculator"]: colors.append(CardColor.Yellow)
+	if "Vitality" in card["color calculator"]: colors.append(CardColor.Green)
+	if "Order" in card["color calculator"]: colors.append(CardColor.Blue)
+	if "Information" in card["color calculator"]: colors.append(CardColor.Purple)
 	if "Generic" in card["color calculator"]: colors.append(CardColor.Generic)
 
 	if colors.size() == 0: colors.append(CardColor.Generic)
@@ -141,8 +147,7 @@ func updateColors(card):
 
 func updateImageColor(node: Sprite2D, index: int, color: CardColor, renowned = false):
 	renowned = "renowned" if renowned else ""
-	node.texture = load("res://textures/" + CardColor2String(color).to_lower() + "/" + renowned + String.num(index) + ".png")
+	node.texture = load("res://textures/" + CardColor2String(color).to_lower() + "/" + renowned + String.num_uint64(index) + ".png")
 
 func updateTextColor(node: Label, color: Color):
 	node.label_settings.font_color = color
-

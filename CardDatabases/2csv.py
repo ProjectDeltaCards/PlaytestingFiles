@@ -3,7 +3,7 @@ import pandas as pd
 
 # Define function to replace commas with unicode equivalents
 def replace_commas(cell):
-	if isinstance(cell, str): return cell.replace(',', '\u066B')
+	if isinstance(cell, str): return cell.replace(',', '\u066B').replace("\n", "\\n")
 	return cell
 
 filelist = os.listdir(os.getcwd())

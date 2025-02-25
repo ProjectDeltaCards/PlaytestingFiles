@@ -69,11 +69,13 @@ func parseCSVLine(line: String):
 	
 func processCards(indata):
 	var costRegex = RegEx.new()
-	costRegex.compile("([ROYGBPXZC_]|1?[0-9])")
+	costRegex.compile("([NUMVOIXZG+_](\\/[NUMVOI])?|1?[0-9])")
 	var symbolExtractRegex = RegEx.new()
-	symbolExtractRegex.compile("(\\[([ROYGBPTQUXZC_]|1?[0-9])\\])")
+	symbolExtractRegex.compile("(\\[([NUMVOITQXZG+_](\\/[NUMVOI])?|1?[0-9])\\])")
 	var parenthesizedExtractRegex = RegEx.new()
 	parenthesizedExtractRegex.compile("(\\([\\s\\S]*?\\))")
+	var referenceExtractRegex = RegEx.new()
+	referenceExtractRegex.compile("`([^`]*?)`")
 	
 	var outdata = []
 	for card in indata:
@@ -87,8 +89,8 @@ func processCards(indata):
 		card["effectiveness"] = card["effectiveness"].to_int()
 		card["attack power"] = card["attack power"].to_int()
 		card["health"] = card["health"].to_int()
-		card["name size"] = card["name size"].to_int()
-		card["subtype size"] = card["subtype size"].to_int()
+		#card["name size"] = card["name size"].to_int()
+		#card["subtype size"] = card["subtype size"].to_int()
 		card["renowned"] = "R." in card["type"] or card["type"] == "Commander"
 		
 		card["name"] = card["name"].replace("\u066B", ",")
@@ -97,29 +99,37 @@ func processCards(indata):
 		card["iconified cost"] = card["iconified cost"].replace("\\n", "\n")
 		card["icost"] = card["iconified cost"]
 
-		card["iconified rules"] = parenthesizedExtractRegex.sub(
-			symbolExtractRegex.sub(card["rules"], "[img=45]res://textures/icons/$2.png[/img]", true).replace("--","—").replace("->","•").replace("~@",\
-				"<i>" + card["name"].split(",")[0] + "</i>"\
-			).replace("~", "<i>" + card["name"] + "</i>"),\
-		"[i][color=#34343A]$0[/color][/i]", true).replace("<", "[").replace(">", "]").replace("[/p][p]", "[font_size=15]\n\n[/font_size]").replace("[br/]", "\n")
-		card["iconified rules"] = card["iconified rules"].replace("\\n", "\n").replace("\"\"", "\"").replace("\u066B", ",")
-		card["irules"] = card["iconified rules"]
-		
-		if "#NAME" in card["color calculator"]:
+		card["iconified rules"] = referenceExtractRegex.sub(
+			parenthesizedExtractRegex.sub(
+				symbolExtractRegex.sub(card["rules"], "[img=45]res://textures/icons/$2.png[/img]", true).replace("--","—").replace("->","•").replace("~@",\
+					"<i>" + card["name"].split(",")[0] + "</i>"\
+				).replace("~", "<i>" + card["name"] + "</i>"),\
+			"[i][color=#34343A]$0[/color][/i]", true),\
+			"<i>$1</i>", true
+		).replace("<", "[").replace(">", "]").replace("[/p][p]", "[font_size=15]\n\n[/font_size]").replace("[br/]", "\n")
+		card["iconified rules"] = card["iconified rules"].replace("\\n", "[font_size=15]\n\n[/font_size]").replace("\"\"", "\"").replace("\u066B", ",")
+
+		if card["iconified rules"].is_empty():
+			card["iconified rules"] = "[i][color=#34343A]" + card["flavor"] + "[/color][/i]"
+		card["irules"] = card["iconified rules"]	
+
+		if not card.has("color calculator") or "#NAME" in card["color calculator"]:
 			card["color calculator"] = ""
-			if "R" in card["cost"]: card["color calculator"] += " Red"
-			if "O" in card["cost"]: card["color calculator"] += " Orange"
-			if "Y" in card["cost"]: card["color calculator"] += " Yellow"
-			if "G" in card["cost"]: card["color calculator"] += " Green"
-			if "B" in card["cost"]: card["color calculator"] += " Blue"
-			if "P" in card["cost"]: card["color calculator"] += " Purple"
+			if "N" in card["cost"]: card["color calculator"] += " Entropy"
+			if "U" in card["cost"]: card["color calculator"] += " Unrest"
+			if "M" in card["cost"]: card["color calculator"] += " Emotion"
+			if "V" in card["cost"]: card["color calculator"] += " Vitality"
+			if "O" in card["cost"]: card["color calculator"] += " Order"
+			if "I" in card["cost"]: card["color calculator"] += " Information"
 		
-		if "#NAME" in card["color"]:
+		if not card.has("color") or "#NAME" in card["color"]:
 			var colors = card["color calculator"].strip_edges().split(" ")
 			if colors.size() == 1: card["color"] = colors[0]
 			else: card["color"] = "Multicolor"
 		
-		if not card.has("setted slot"): card["setted slot"] = "ERR_" + card["slot"]
+		if not card.has("setted slot"):
+			if "." in card["slot"]: card["setted slot"] = card["slot"]
+			else: card["setted slot"] = "ERR." + card["slot"]
 		
 		outdata.append(card)
 	return outdata
