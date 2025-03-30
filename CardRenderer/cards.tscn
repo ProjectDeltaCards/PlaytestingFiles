@@ -84,8 +84,8 @@ texture = ExtResource("3_yeqbf")
 centered = false
 
 [node name="Art" type="Sprite2D" parent="SubViewport/Card/Mask"]
-position = Vector2(734.763, 531)
-scale = Vector2(0.262963, 0.248387)
+position = Vector2(673, 934)
+scale = Vector2(0.995536, 0.987179)
 texture = ExtResource("4_wonty")
 
 [node name="Card" type="Sprite2D" parent="SubViewport/Card"]
@@ -130,12 +130,12 @@ offset_top = 89.0
 offset_right = 270.0
 offset_bottom = 815.0
 bbcode_enabled = true
-text = "[right][img=119]res://textures/icons/R.png[/img]
+text = "[right][img=119]res://textures/icons/N.png[/img]
+[img=119]res://textures/icons/U.png[/img]
+[img=119]res://textures/icons/M.png[/img]
+[img=119]res://textures/icons/V.png[/img]
 [img=119]res://textures/icons/O.png[/img]
-[img=119]res://textures/icons/Y.png[/img]
-[img=119]res://textures/icons/G.png[/img]
-[img=119]res://textures/icons/B.png[/img]
-[img=119]res://textures/icons/P.png[/img]"
+[img=119]res://textures/icons/I.png[/img]"
 scroll_active = false
 threaded = true
 
@@ -146,12 +146,12 @@ offset_top = 89.0
 offset_right = 144.0
 offset_bottom = 815.0
 bbcode_enabled = true
-text = "[right][img=119]res://textures/icons/R.png[/img]
+text = "[right][img=119]res://textures/icons/N.png[/img]
+[img=119]res://textures/icons/U.png[/img]
+[img=119]res://textures/icons/M.png[/img]
+[img=119]res://textures/icons/V.png[/img]
 [img=119]res://textures/icons/O.png[/img]
-[img=119]res://textures/icons/Y.png[/img]
-[img=119]res://textures/icons/G.png[/img]
-[img=119]res://textures/icons/B.png[/img]
-[img=119]res://textures/icons/P.png[/img]"
+[img=119]res://textures/icons/I.png[/img]"
 scroll_active = false
 threaded = true
 

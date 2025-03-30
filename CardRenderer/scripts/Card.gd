@@ -84,6 +84,18 @@ func updateCard(index = 0):
 	$"Attack Power".visible = card["has ph"]
 	$"Health".text = String.num_uint64(card["health"])
 	$"Health".visible = card["has ph"]
+	
+	# Pick a card image 
+	var image_path = card["image"]
+	if len(image_path) == 0:
+		var set = settedSlot.split(".")[0]
+		var rest = ".".join(settedSlot.split(".").slice(1))
+		image_path = set + "/" + rest + ".png"
+	image_path = "res://cardarts/" + image_path 
+	var texture = preload("res://textures/placeholder.png")
+	if ResourceLoader.exists(image_path):
+		texture = load(image_path)
+	$Mask/Art.texture = texture
 
 	updateColors(card)
 	await $"SubtypeContainer/Subtype".set_sized_text_finished
