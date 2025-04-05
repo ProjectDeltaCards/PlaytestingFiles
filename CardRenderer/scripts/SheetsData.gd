@@ -1,4 +1,5 @@
 extends Node
+class_name SheetsData
 
 var json = JSON.new()
 var data = null
@@ -8,7 +9,6 @@ var processed = 0
 signal new_data_available
 signal all_data_available
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	for sheet in sheets:
 		if "http" in sheet:
@@ -141,7 +141,6 @@ func _process(_dt):
 		processed = 0
 		all_data_available.emit()
 #		print(data)
-		var f = FileAccess.open("res://export/res.json", FileAccess.WRITE)
-		f.store_string(json.stringify(data))
-		f.close()
-	pass
+		#var f = FileAccess.open("res://export/res.json", FileAccess.WRITE)
+		#f.store_string(json.stringify(data))
+		#f.close()

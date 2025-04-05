@@ -21,7 +21,7 @@ resources_spreadsheet_view/context_menu_on_leftclick=false
 [application]
 
 config/name="CardRenderer"
-run/main_scene="res://cards.tscn"
+run/main_scene="res://scenes/card_renderer.tscn"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://df2sspr31xg8x"]
+
+[ext_resource type="Script" uid="uid://b270umdc5wiv6" path="res://scripts/SheetsData.gd" id="1_b0vp8"]
+[ext_resource type="PackedScene" uid="uid://nuq663npg7e2" path="res://scenes/card.tscn" id="2_l1w7m"]
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+offset_left = -7.0
+offset_top = -815.0
+offset_right = 1337.0
+offset_bottom = 1057.0
+
+[node name="SheetsData" type="Node" parent="."]
+script = ExtResource("1_b0vp8")
+sheets = PackedStringArray("res://databases/Set 0 - Civilians.csv", "res://databases/Set 1 - Sara.csv", "res://databases/Set 2 - Hana.csv", "res://databases/Set 3 - Namibia.csv", "res://databases/Set 4 - Enigma.csv", "res://databases/Set 5 - Locio.csv", "res://databases/Set 6 - Samuel.csv", "res://databases/Set 7 - Lexi.csv")
+
+[node name="Card" parent="." node_paths=PackedStringArray("sheetsData") instance=ExtResource("2_l1w7m")]
+sheetsData = NodePath("../SheetsData")

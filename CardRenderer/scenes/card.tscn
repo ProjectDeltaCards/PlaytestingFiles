@@ -1,35 +1,34 @@
-[gd_scene load_steps=23 format=3 uid="uid://df2sspr31xg8x"]
+[gd_scene load_steps=22 format=3 uid="uid://nuq663npg7e2"]
 
-[ext_resource type="Script" uid="uid://b270umdc5wiv6" path="res://scripts/SheetsData.gd" id="1_sklx3"]
-[ext_resource type="Texture2D" uid="uid://ddog7crfh1s8d" path="res://textures/CARD.png" id="2_i7dll"]
-[ext_resource type="Script" uid="uid://c1poeis54b3t5" path="res://scripts/Card.gd" id="2_l618c"]
-[ext_resource type="Texture2D" uid="uid://ch0a3fafxhtpj" path="res://textures/generic/1.png" id="3_101sj"]
-[ext_resource type="Texture2D" uid="uid://cbnpc8psa2u4o" path="res://textures/MASK.png" id="3_yeqbf"]
-[ext_resource type="Texture2D" uid="uid://ds2k1miob1umv" path="res://textures/generic/renowned2.png" id="4_5qqxb"]
-[ext_resource type="Texture2D" uid="uid://t7p4a15bvo0a" path="res://textures/placeholder.png" id="4_wonty"]
-[ext_resource type="Texture2D" uid="uid://cq153yl8dpmc" path="res://textures/generic/3.png" id="5_ldsmp"]
-[ext_resource type="Texture2D" uid="uid://dkm616gttto4t" path="res://textures/generic/4.png" id="6_tan50"]
-[ext_resource type="Texture2D" uid="uid://cynxdnj1tmph4" path="res://textures/generic/5.png" id="7_1lngl"]
-[ext_resource type="FontFile" uid="uid://cu2aun03gysyl" path="res://fonts/ethnocentric rg.otf" id="8_n3s1j"]
-[ext_resource type="Script" uid="uid://3jl08yvsuor6" path="res://scripts/dynamicFontSizeLabel.gd" id="9_3vhxw"]
-[ext_resource type="Script" uid="uid://c5hb3ibe3g8n6" path="res://scripts/dynamicFontSizeRichTextLabel.gd" id="10_nj6fg"]
-[ext_resource type="Theme" uid="uid://6aabg5xmqjnc" path="res://fonts/Hack.RTL.theme" id="10_ogxrk"]
-[ext_resource type="FontFile" uid="uid://ff46xvq8y176" path="res://fonts/Hack-Regular.ttf" id="11_4ucpm"]
-[ext_resource type="FontFile" uid="uid://l3ev7vgvf75p" path="res://fonts/ethnocentric rg it.otf" id="11_irf5d"]
-[ext_resource type="Texture2D" uid="uid://bumst2825nm5e" path="res://textures/PH.png" id="15_1iv8o"]
+[ext_resource type="Script" uid="uid://c1poeis54b3t5" path="res://scripts/Card.gd" id="1_oaj0s"]
+[ext_resource type="Texture2D" uid="uid://cbnpc8psa2u4o" path="res://textures/MASK.png" id="2_lbpyt"]
+[ext_resource type="Texture2D" uid="uid://t7p4a15bvo0a" path="res://textures/placeholder.png" id="3_h8qr4"]
+[ext_resource type="Texture2D" uid="uid://ddog7crfh1s8d" path="res://textures/CARD.png" id="4_kvrdl"]
+[ext_resource type="Texture2D" uid="uid://ch0a3fafxhtpj" path="res://textures/generic/1.png" id="5_soe5h"]
+[ext_resource type="Texture2D" uid="uid://ds2k1miob1umv" path="res://textures/generic/renowned2.png" id="6_cd7f1"]
+[ext_resource type="Texture2D" uid="uid://cq153yl8dpmc" path="res://textures/generic/3.png" id="7_3jvtn"]
+[ext_resource type="Texture2D" uid="uid://dkm616gttto4t" path="res://textures/generic/4.png" id="8_astg2"]
+[ext_resource type="FontFile" uid="uid://cu2aun03gysyl" path="res://fonts/ethnocentric rg.otf" id="9_vhwgv"]
+[ext_resource type="Script" uid="uid://3jl08yvsuor6" path="res://scripts/dynamicFontSizeLabel.gd" id="10_d3p2n"]
+[ext_resource type="FontFile" uid="uid://l3ev7vgvf75p" path="res://fonts/ethnocentric rg it.otf" id="11_xgvo5"]
+[ext_resource type="FontFile" uid="uid://ff46xvq8y176" path="res://fonts/Hack-Regular.ttf" id="12_p0fm2"]
+[ext_resource type="Script" uid="uid://c5hb3ibe3g8n6" path="res://scripts/dynamicFontSizeRichTextLabel.gd" id="13_xip4d"]
+[ext_resource type="Theme" uid="uid://6aabg5xmqjnc" path="res://fonts/Hack.RTL.theme" id="14_bymj5"]
+[ext_resource type="Texture2D" uid="uid://bumst2825nm5e" path="res://textures/PH.png" id="15_v2n4i"]
+[ext_resource type="Texture2D" uid="uid://cynxdnj1tmph4" path="res://textures/generic/5.png" id="16_3mgwo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ev7on"]
-font = ExtResource("8_n3s1j")
+font = ExtResource("9_vhwgv")
 font_size = 60
 font_color = Color(0.207843, 0.207843, 0.231373, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_25qap"]
-font = ExtResource("11_irf5d")
+font = ExtResource("11_xgvo5")
 font_size = 50
 font_color = Color(0.207843, 0.207843, 0.231373, 1)
 
 [sub_resource type="Theme" id="Theme_snbqg"]
-default_font = ExtResource("8_n3s1j")
+default_font = ExtResource("9_vhwgv")
 default_font_size = 45
 RichTextLabel/colors/default_color = Color(0.203922, 0.203922, 0.227451, 1)
 RichTextLabel/constants/shadow_offset_x = 0
@@ -40,75 +39,65 @@ RichTextLabel/font_sizes/bold_italics_font_size = 45
 RichTextLabel/font_sizes/italics_font_size = 45
 RichTextLabel/font_sizes/mono_font_size = 45
 RichTextLabel/font_sizes/normal_font_size = 45
-RichTextLabel/fonts/bold_font = ExtResource("8_n3s1j")
-RichTextLabel/fonts/bold_italics_font = ExtResource("11_irf5d")
-RichTextLabel/fonts/italics_font = ExtResource("11_irf5d")
-RichTextLabel/fonts/mono_font = ExtResource("11_4ucpm")
-RichTextLabel/fonts/normal_font = ExtResource("8_n3s1j")
+RichTextLabel/fonts/bold_font = ExtResource("9_vhwgv")
+RichTextLabel/fonts/bold_italics_font = ExtResource("11_xgvo5")
+RichTextLabel/fonts/italics_font = ExtResource("11_xgvo5")
+RichTextLabel/fonts/mono_font = ExtResource("12_p0fm2")
+RichTextLabel/fonts/normal_font = ExtResource("9_vhwgv")
 
 [sub_resource type="LabelSettings" id="LabelSettings_fcx0h"]
-font = ExtResource("8_n3s1j")
+font = ExtResource("9_vhwgv")
 font_size = 70
 
 [sub_resource type="LabelSettings" id="LabelSettings_6a5q3"]
-font = ExtResource("8_n3s1j")
+font = ExtResource("9_vhwgv")
 font_size = 60
 
-[node name="SubViewportContainer" type="SubViewportContainer"]
-offset_left = -7.0
-offset_top = -815.0
-offset_right = 1337.0
-offset_bottom = 1057.0
-
-[node name="SheetsData" type="Node" parent="."]
-script = ExtResource("1_sklx3")
-sheets = PackedStringArray("res://databases/Set 0 - Civilians.csv", "res://databases/Set 1 - Sara.csv", "res://databases/Set 2 - Hana.csv", "res://databases/Set 3 - Namibia.csv", "res://databases/Set 4 - Enigma.csv", "res://databases/Set 5 - Locio.csv", "res://databases/Set 6 - Samuel.csv")
-
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="Card" type="SubViewport"]
 transparent_bg = true
 handle_input_locally = false
 screen_space_aa = 1
 size = Vector2i(1344, 1872)
 render_target_update_mode = 4
+script = ExtResource("1_oaj0s")
 
-[node name="Card" type="Control" parent="SubViewport"]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_l618c")
 
-[node name="Mask" type="Sprite2D" parent="SubViewport/Card"]
+[node name="Mask" type="Sprite2D" parent="Control"]
 clip_children = 1
-texture = ExtResource("3_yeqbf")
+texture = ExtResource("2_lbpyt")
 centered = false
 
-[node name="Art" type="Sprite2D" parent="SubViewport/Card/Mask"]
+[node name="Art" type="Sprite2D" parent="Control/Mask"]
 position = Vector2(673, 934)
 scale = Vector2(0.995536, 0.987179)
-texture = ExtResource("4_wonty")
+texture = ExtResource("3_h8qr4")
 
-[node name="Card" type="Sprite2D" parent="SubViewport/Card"]
-texture = ExtResource("2_i7dll")
+[node name="Card" type="Sprite2D" parent="Control"]
+texture = ExtResource("4_kvrdl")
 centered = false
 
-[node name="Color1" type="Sprite2D" parent="SubViewport/Card"]
-texture = ExtResource("3_101sj")
+[node name="Color1" type="Sprite2D" parent="Control"]
+texture = ExtResource("5_soe5h")
 centered = false
 
-[node name="Color2" type="Sprite2D" parent="SubViewport/Card"]
-texture = ExtResource("4_5qqxb")
+[node name="Color2" type="Sprite2D" parent="Control"]
+texture = ExtResource("6_cd7f1")
 centered = false
 
-[node name="Color3" type="Sprite2D" parent="SubViewport/Card"]
-texture = ExtResource("5_ldsmp")
+[node name="Color3" type="Sprite2D" parent="Control"]
+texture = ExtResource("7_3jvtn")
 centered = false
 
-[node name="Color4" type="Sprite2D" parent="SubViewport/Card"]
-texture = ExtResource("6_tan50")
+[node name="Color4" type="Sprite2D" parent="Control"]
+texture = ExtResource("8_astg2")
 centered = false
 
-[node name="Name" type="Label" parent="SubViewport/Card"]
+[node name="Name" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 300.0
 offset_top = 125.0
@@ -121,9 +110,9 @@ vertical_alignment = 1
 autowrap_mode = 3
 uppercase = true
 max_lines_visible = 2
-script = ExtResource("9_3vhxw")
+script = ExtResource("10_d3p2n")
 
-[node name="Cost" type="RichTextLabel" parent="SubViewport/Card"]
+[node name="Cost" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 89.0
@@ -139,7 +128,7 @@ text = "[right][img=119]res://textures/icons/N.png[/img]
 scroll_active = false
 threaded = true
 
-[node name="Cost2" type="RichTextLabel" parent="SubViewport/Card"]
+[node name="Cost2" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = -94.0
 offset_top = 89.0
@@ -155,7 +144,7 @@ text = "[right][img=119]res://textures/icons/N.png[/img]
 scroll_active = false
 threaded = true
 
-[node name="Range" type="RichTextLabel" parent="SubViewport/Card"]
+[node name="Range" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 42.0
 offset_top = 795.0
@@ -166,7 +155,7 @@ text = "[img=220]res://textures/icons/Formation.png[/img]"
 scroll_active = false
 threaded = true
 
-[node name="Type" type="Label" parent="SubViewport/Card"]
+[node name="Type" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 313.0
 offset_top = 824.0
@@ -180,7 +169,7 @@ autowrap_mode = 3
 uppercase = true
 max_lines_visible = 1
 
-[node name="SubtypeContainer" type="ScrollContainer" parent="SubViewport/Card"]
+[node name="SubtypeContainer" type="ScrollContainer" parent="Control"]
 clip_contents = false
 layout_mode = 0
 offset_left = 260.0
@@ -190,7 +179,7 @@ offset_bottom = 968.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 0
 
-[node name="Subtype" type="RichTextLabel" parent="SubViewport/Card/SubtypeContainer"]
+[node name="Subtype" type="RichTextLabel" parent="Control/SubtypeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -199,11 +188,11 @@ bbcode_enabled = true
 text = "Transient"
 fit_content = true
 scroll_active = false
-script = ExtResource("10_nj6fg")
+script = ExtResource("13_xip4d")
 targetFontSize = 45
 minFontSize = 30
 
-[node name="Effectiveness" type="Label" parent="SubViewport/Card"]
+[node name="Effectiveness" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 1061.0
 offset_top = 873.0
@@ -218,7 +207,7 @@ autowrap_mode = 3
 uppercase = true
 max_lines_visible = 2
 
-[node name="RulesContainer" type="ScrollContainer" parent="SubViewport/Card"]
+[node name="RulesContainer" type="ScrollContainer" parent="Control"]
 layout_mode = 0
 offset_left = 181.0
 offset_top = 990.0
@@ -227,11 +216,11 @@ offset_bottom = 1723.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 0
 
-[node name="Rules" type="RichTextLabel" parent="SubViewport/Card/RulesContainer"]
+[node name="Rules" type="RichTextLabel" parent="Control/RulesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
-theme = ExtResource("10_ogxrk")
+theme = ExtResource("14_bymj5")
 bbcode_enabled = true
 text = "[center][u]Transient[/u] [i][color=#34343A][font_size=40](If [i]Bullet[/i] would enter your discard, instead remove it from the game.)[/font_size][/color][/i][font_size=15]
 
@@ -242,19 +231,19 @@ text = "[center][u]Transient[/u] [i][color=#34343A][font_size=40](If [i]Bullet[/
 fit_content = true
 scroll_active = false
 threaded = true
-script = ExtResource("10_nj6fg")
+script = ExtResource("13_xip4d")
 targetFontSize = 40
 metadata/_edit_layout_mode = 1
 
-[node name="PH" type="Sprite2D" parent="SubViewport/Card"]
-texture = ExtResource("15_1iv8o")
+[node name="PH" type="Sprite2D" parent="Control"]
+texture = ExtResource("15_v2n4i")
 centered = false
 
-[node name="Color5" type="Sprite2D" parent="SubViewport/Card"]
-texture = ExtResource("7_1lngl")
+[node name="Color5" type="Sprite2D" parent="Control"]
+texture = ExtResource("16_3mgwo")
 centered = false
 
-[node name="Range2" type="RichTextLabel" parent="SubViewport/Card"]
+[node name="Range2" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 1069.0
 offset_top = 1451.0
@@ -265,7 +254,7 @@ text = "[img=122]res://textures/icons/Formation.png[/img]"
 scroll_active = false
 threaded = true
 
-[node name="Attack Power" type="Label" parent="SubViewport/Card"]
+[node name="Attack Power" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 1077.0
 offset_top = 1577.0
@@ -280,7 +269,7 @@ text_overrun_behavior = 1
 uppercase = true
 max_lines_visible = 3
 
-[node name="Health" type="Label" parent="SubViewport/Card"]
+[node name="Health" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 1215.0
 offset_top = 1577.0

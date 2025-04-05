@@ -1,8 +1,9 @@
-extends Control
+extends SubViewport
+class_name CardRenderer
 
 var settedSlot = "INVALID";
 
-@onready var sheetsData = $"../../SheetsData"
+@export var sheetsData : Node
 
 enum CardColor {
 	Generic,
@@ -49,41 +50,39 @@ func CardColor2String(color: CardColor) -> String:
 func _ready():
 	sheetsData.connect("all_data_available", saveCards)
 
-
 func saveCards():
 	var i = 0
 	while i < sheetsData.data.size():
-		await updateCard(i)
+		await updateCard(sheetsData.data[i])
 		saveCardToFile("res://export/" + settedSlot + ".png")
 		i += 1
 		# break
 	print("Done!")
 
-func updateCard(index = 0):
-	var card = sheetsData.data[index]
+func updateCard(card):
 #	print(card)
 	settedSlot = card["setted slot"] if card.has("setted slot") else card["slot"]
 
-	$"Name".setSizedText(card["name"])
+	$"Control/Name".setSizedText(card["name"])
 	if not "\n\n" in card["icost"]:
-		$"Cost".text = "[right]" + "]".join(card["icost"].split("]").slice(0, 12))
-		if not $"Cost".text.ends_with("]"): $"Cost".text += "]"
-		$"Cost2".text = "[right]" + "]".join(card["icost"].split("]").slice(12, 24))
+		$"Control/Cost".text = "[right]" + "]".join(card["icost"].split("]").slice(0, 12))
+		if not $"Control/Cost".text.ends_with("]"): $"Control/Cost".text += "]"
+		$"Control/Cost2".text = "[right]" + "]".join(card["icost"].split("]").slice(12, 24))
 	else: 
-		$"Cost".text = "[right]" + card["icost"].split("\n\n")[0]
-		$"Cost2".text = "[right]" + card["icost"].split("\n\n")[1]
+		$"Control/Cost".text = "[right]" + card["icost"].split("\n\n")[0]
+		$"Control/Cost2".text = "[right]" + card["icost"].split("\n\n")[1]
 	updateRangedIcon(card)
-	$"Type".text = card["type"]
-	$"SubtypeContainer/Subtype".setSizedText(card["subtype"])
+	$"Control/Type".text = card["type"]
+	$"Control/SubtypeContainer/Subtype".setSizedText(card["subtype"])
 	updateEffectiveness(card)
-	var rules = $"RulesContainer/Rules"
+	var rules = $"Control/RulesContainer/Rules"
 	rules.text = card["irules"]
 
-	$"PH".visible = card["has ph"]
-	$"Attack Power".text = String.num_uint64(card["attack power"])
-	$"Attack Power".visible = card["has ph"]
-	$"Health".text = String.num_uint64(card["health"])
-	$"Health".visible = card["has ph"]
+	$"Control/PH".visible = card["has ph"]
+	$"Control/Attack Power".text = String.num_uint64(card["attack power"])
+	$"Control/Attack Power".visible = card["has ph"]
+	$"Control/Health".text = String.num_uint64(card["health"])
+	$"Control/Health".visible = card["has ph"]
 	
 	# Pick a card image 
 	var image_path = card["image"]
@@ -95,10 +94,10 @@ func updateCard(index = 0):
 	var texture = preload("res://textures/placeholder.png")
 	if ResourceLoader.exists(image_path):
 		texture = load(image_path)
-	$Mask/Art.texture = texture
+	$Control/Mask/Art.texture = texture
 
 	updateColors(card)
-	await $"SubtypeContainer/Subtype".set_sized_text_finished
+	await $"Control/SubtypeContainer/Subtype".set_sized_text_finished
 
 	while not rules.is_ready():
 		await get_tree().process_frame # Wait an extra few frames to make sure the rules have rendered
@@ -107,11 +106,11 @@ func updateCard(index = 0):
 
 func saveCardToFile(path):
 	print("Saving to: ", path)
-	return $"..".get_texture().get_image().save_png(path)
+	return get_texture().get_image().save_png(path)
 	
 
 func updateEffectiveness(card):
-	var node = $"Effectiveness"
+	var node = $"Control/Effectiveness"
 	var effectiveness = card["effectiveness"]
 	var color = Color("#D9D9DB")
 	if effectiveness >= 5: color = Color("#999969")
@@ -121,7 +120,7 @@ func updateEffectiveness(card):
 	node.label_settings.font_color = color
 
 func updateRangedIcon(card):
-	var node = $"Range"; var node2 = $"Range2"
+	var node = $"Control/Range"; var node2 = $"Control/Range2"
 	var status = card["melee/ranged"]
 
 	if status == "":
@@ -144,17 +143,17 @@ func updateColors(card):
 
 	if colors.size() == 0: colors.append(CardColor.Generic)
 
-	updateImageColor($"Color1", 1, colors[0 % colors.size()])
-	updateImageColor($"Color2", 2, colors[1 % colors.size()], card["renowned"])
-	updateImageColor($"Color3", 3, colors[2 % colors.size()])
-	updateImageColor($"Color4", 4, colors[3 % colors.size()])
-	updateImageColor($"Color5", 5, colors[4 % colors.size()])
+	updateImageColor($"Control/Color1", 1, colors[0 % colors.size()])
+	updateImageColor($"Control/Color2", 2, colors[1 % colors.size()], card["renowned"])
+	updateImageColor($"Control/Color3", 3, colors[2 % colors.size()])
+	updateImageColor($"Control/Color4", 4, colors[3 % colors.size()])
+	updateImageColor($"Control/Color5", 5, colors[4 % colors.size()])
 	# AP and HT both share the color in slot 6
-	updateTextColor($"Attack Power", CardColor2Dark(colors[5 % colors.size()]))
-	updateTextColor($"Health", CardColor2Dark(colors[5 % colors.size()]))
+	updateTextColor($"Control/Attack Power", CardColor2Dark(colors[5 % colors.size()]))
+	updateTextColor($"Control/Health", CardColor2Dark(colors[5 % colors.size()]))
 
 	# Type is colored for mono cards, and uses the generic color otherwise
-	updateTextColor($"Type", CardColor2Dark(colors[0] if colors.size() <= 1 else CardColor.Generic))
+	updateTextColor($"Control/Type", CardColor2Dark(colors[0] if colors.size() <= 1 else CardColor.Generic))
 
 
 func updateImageColor(node: Sprite2D, index: int, color: CardColor, renowned = false):
