@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://7na8cgol2fvl"]
+
+[ext_resource type="Script" uid="uid://dhmst057yga7w" path="res://game/target/target.gd" id="1_k6oq8"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3k5xd"]
+properties/0/path = NodePath(".:points")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="Target" type="Line2D"]
+z_index = 4096
+points = PackedVector2Array(0, 0, 100, 0)
+script = ExtResource("1_k6oq8")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_3k5xd")

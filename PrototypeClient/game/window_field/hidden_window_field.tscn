@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsn3sldv5n6wm"]
+
+[ext_resource type="Script" uid="uid://bugqhhocyrgxr" path="res://game/window_field/window_field.gd" id="1_p58sn"]
+[ext_resource type="Texture2D" uid="uid://cyg08d0c2mbwo" path="res://textures/kenney_card_back.png" id="2_glrwg"]
+[ext_resource type="PackedScene" uid="uid://086yrvyrobjq" path="res://addons/control_node_window/window_scenes/control_node_window.tscn" id="3_48658"]
+[ext_resource type="PackedScene" uid="uid://b66ie03dc5dey" path="res://game/field/hidden_field.tscn" id="4_136q1"]
+[ext_resource type="Script" uid="uid://dqgye8gm8yxfq" path="res://game/window_field/disable_area_when_hidden.gd" id="5_mhydg"]
+
+[node name="WindowFieldArea" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WindowField" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -95.0
+offset_right = 140.0
+offset_bottom = 95.0
+grow_vertical = 2
+script = ExtResource("1_p58sn")
+
+[node name="Sprite2D" type="Sprite2D" parent="WindowField"]
+position = Vector2(70, 95)
+texture = ExtResource("2_glrwg")
+
+[node name="Window" parent="." instance=ExtResource("3_48658")]
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 84.0
+offset_top = -150.0
+offset_right = 1284.0
+offset_bottom = 150.0
+grow_vertical = 2
+popup_rect = Rect2(84, 390, 1200, 300)
+window_name = "Cards In Field"
+
+[node name="HiddenField" parent="Window" instance=ExtResource("4_136q1")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 79.0
+offset_top = 385.0
+offset_right = 279.0
+offset_bottom = 585.0
+
+[node name="CardDropAreaRight" parent="Window/HiddenField" index="3"]
+position = Vector2(888, 132)
+script = ExtResource("5_mhydg")
+
+[node name="CardDropAreaLeft" parent="Window/HiddenField" index="4"]
+position = Vector2(293.5, 132)
+script = ExtResource("5_mhydg")
+
+[editable path="Window/HiddenField"]

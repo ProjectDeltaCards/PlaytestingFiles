@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlvdpajbxewmj"]
+
+[ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://game/field/field.tscn" id="1_jgw0m"]
+[ext_resource type="Script" uid="uid://cp75pvpfpixmm" path="res://game/field/H2V.gd" id="2_s6w2j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6w2j"]
+size = Vector2(148.5, 386)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usi8b"]
+size = Vector2(147.5, 391.5)
+
+[node name="Stack" instance=ExtResource("1_jgw0m")]
+anchor_right = 0.128
+anchor_bottom = 0.648
+offset_right = 0.543991
+offset_bottom = 0.0960083
+
+[node name="CardsHolder" parent="." index="2"]
+script = ExtResource("2_s6w2j")
+
+[node name="CardDropAreaRight" parent="." index="3"]
+position = Vector2(74, 315)
+
+[node name="CollisionShape2D" parent="CardDropAreaRight" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_s6w2j")
+
+[node name="CardDropAreaLeft" parent="." index="4"]
+position = Vector2(74, 104)
+
+[node name="CollisionShape2D" parent="CardDropAreaLeft" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_usi8b")

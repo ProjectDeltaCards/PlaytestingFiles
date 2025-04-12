@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b66ie03dc5dey"]
+
+[ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://game/field/field.tscn" id="1_01l0o"]
+[ext_resource type="Script" uid="uid://c2dchoi53odaq" path="res://game/field/hidden_field.gd" id="2_soh23"]
+
+[node name="HiddenField" instance=ExtResource("1_01l0o")]
+script = ExtResource("2_soh23")

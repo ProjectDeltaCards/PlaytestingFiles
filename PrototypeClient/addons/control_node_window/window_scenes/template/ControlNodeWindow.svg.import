@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyg08d0c2mbwo"
-path="res://.godot/imported/kenney_card_back.png-79cfc78931cf6d9926be85d3358ea695.ctex"
+uid="uid://d3mw341rbal4d"
+path="res://.godot/imported/ControlNodeWindow.svg-59f3e2d992cb21d6c38ad1e71314cc33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/kenney_card_back.png"
-dest_files=["res://.godot/imported/kenney_card_back.png-79cfc78931cf6d9926be85d3358ea695.ctex"]
+source_file="res://addons/control_node_window/window_scenes/template/ControlNodeWindow.svg"
+dest_files=["res://.godot/imported/ControlNodeWindow.svg-59f3e2d992cb21d6c38ad1e71314cc33.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

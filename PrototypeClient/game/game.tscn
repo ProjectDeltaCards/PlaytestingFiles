@@ -1,0 +1,285 @@
+[gd_scene load_steps=8 format=3 uid="uid://buh3412b0qtpp"]
+
+[ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://game/field/field.tscn" id="1_h7iqs"]
+[ext_resource type="Script" uid="uid://sxk2vbrb1da0" path="res://game/game.gd" id="1_u5opy"]
+[ext_resource type="PackedScene" uid="uid://3trgkf0u68ry" path="res://game/card/card.tscn" id="2_4fuuu"]
+[ext_resource type="PackedScene" uid="uid://b66ie03dc5dey" path="res://game/field/hidden_field.tscn" id="2_dakft"]
+[ext_resource type="PackedScene" uid="uid://bsn3sldv5n6wm" path="res://game/window_field/hidden_window_field.tscn" id="2_u5opy"]
+[ext_resource type="PackedScene" uid="uid://6iq8o8lgw4sw" path="res://game/slot/slot.tscn" id="3_dxrkv"]
+[ext_resource type="PackedScene" uid="uid://dlvdpajbxewmj" path="res://game/field/stack.tscn" id="4_4fuuu"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_u5opy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["fields"]]
+
+[node name="Up" type="Node" parent="CanvasLayer"]
+
+[node name="ControlButton" type="Button" parent="CanvasLayer/Up"]
+offset_left = 244.0
+offset_top = 153.0
+offset_right = 265.0
+offset_bottom = 437.0
+text = "T
+A
+K
+E
+
+C
+O
+N
+T
+R
+O
+L
+"
+
+[node name="Hand" parent="CanvasLayer/Up" instance=ExtResource("2_dakft")]
+anchor_left = 0.453
+anchor_right = 0.453
+anchor_bottom = 0.0
+offset_left = -591.76
+offset_right = 590.24
+offset_bottom = 150.0
+
+[node name="Card" parent="CanvasLayer/Up/Hand/CardsHolder" index="0" instance=ExtResource("2_4fuuu")]
+layout_mode = 2
+
+[node name="Card2" parent="CanvasLayer/Up/Hand/CardsHolder" index="1" instance=ExtResource("2_4fuuu")]
+layout_mode = 2
+
+[node name="Card3" parent="CanvasLayer/Up/Hand/CardsHolder" index="2" instance=ExtResource("2_4fuuu")]
+layout_mode = 2
+
+[node name="Card4" parent="CanvasLayer/Up/Hand/CardsHolder" index="3" instance=ExtResource("2_4fuuu")]
+layout_mode = 2
+
+[node name="Generators" parent="CanvasLayer/Up" instance=ExtResource("1_h7iqs")]
+anchor_left = 0.453
+anchor_right = 0.453
+anchor_bottom = 0.0
+offset_left = -591.76
+offset_top = 154.0
+offset_right = 590.24
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Backline" parent="CanvasLayer/Up" instance=ExtResource("1_h7iqs")]
+anchor_left = 0.453
+anchor_right = 0.453
+anchor_bottom = 0.0
+offset_left = -591.76
+offset_top = 307.0
+offset_right = 590.24
+offset_bottom = 457.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Frontline" type="HBoxContainer" parent="CanvasLayer/Up"]
+anchors_preset = -1
+anchor_left = 0.45
+anchor_right = 0.456
+offset_left = 11.0
+offset_top = 461.0
+offset_right = 584.48
+offset_bottom = 610.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Frontline1" parent="CanvasLayer/Up/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Frontline2" parent="CanvasLayer/Up/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Frontline3" parent="CanvasLayer/Up/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Frontline4" parent="CanvasLayer/Up/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Frontline5" parent="CanvasLayer/Up/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Deck" parent="CanvasLayer/Up" instance=ExtResource("2_u5opy")]
+
+[node name="WindowField" parent="CanvasLayer/Up/Deck" index="0"]
+offset_left = 160.0
+offset_top = -536.0
+offset_right = 300.0
+offset_bottom = -346.0
+scale = Vector2(0.75, 0.75)
+
+[node name="Window" parent="CanvasLayer/Up/Deck" index="1"]
+offset_left = 261.0
+offset_top = -161.0
+offset_right = 1461.0
+offset_bottom = 139.0
+popup_rect = Rect2(261, 379, 1200, 300)
+
+[node name="HiddenField" parent="CanvasLayer/Up/Deck/Window" index="2"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 195.0
+offset_bottom = 195.0
+
+[node name="Down" type="Node" parent="CanvasLayer"]
+
+[node name="ControlButton" type="Button" parent="CanvasLayer/Down"]
+offset_left = 242.0
+offset_top = 639.0
+offset_right = 263.0
+offset_bottom = 923.0
+text = "T
+A
+K
+E
+
+C
+O
+N
+T
+R
+O
+L
+"
+
+[node name="Hand" parent="CanvasLayer/Down" instance=ExtResource("2_dakft")]
+anchor_left = 0.453
+anchor_top = 0.995
+anchor_right = 0.453
+anchor_bottom = 0.995
+offset_left = -591.76
+offset_top = -149.6
+offset_right = 590.24
+offset_bottom = 0.399902
+
+[node name="Card" parent="CanvasLayer/Down/Hand/CardsHolder" index="0" instance=ExtResource("2_4fuuu")]
+layout_mode = 2
+
+[node name="Card2" parent="CanvasLayer/Down/Hand/CardsHolder" index="1" instance=ExtResource("2_4fuuu")]
+layout_mode = 2
+
+[node name="Card3" parent="CanvasLayer/Down/Hand/CardsHolder" index="2" instance=ExtResource("2_4fuuu")]
+layout_mode = 2
+
+[node name="Card4" parent="CanvasLayer/Down/Hand/CardsHolder" index="3" instance=ExtResource("2_4fuuu")]
+layout_mode = 2
+
+[node name="Generators" parent="CanvasLayer/Down" instance=ExtResource("1_h7iqs")]
+anchor_left = 0.453
+anchor_top = 1.0
+anchor_right = 0.453
+anchor_bottom = 1.0
+offset_left = -591.76
+offset_top = -310.0
+offset_right = 590.24
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Backline" parent="CanvasLayer/Down" instance=ExtResource("1_h7iqs")]
+anchor_left = 0.453
+anchor_top = 1.0
+anchor_right = 0.453
+anchor_bottom = 1.0
+offset_left = -591.76
+offset_top = -462.0
+offset_right = 590.24
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Frontline" type="HBoxContainer" parent="CanvasLayer/Down"]
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 1.0
+anchor_right = 0.45
+anchor_bottom = 1.0
+offset_left = -585.0
+offset_top = -619.0
+offset_right = -6.10352e-05
+offset_bottom = -470.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Frontline1" parent="CanvasLayer/Down/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Frontline2" parent="CanvasLayer/Down/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Frontline3" parent="CanvasLayer/Down/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Frontline4" parent="CanvasLayer/Down/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Frontline5" parent="CanvasLayer/Down/Frontline" instance=ExtResource("3_dxrkv")]
+custom_minimum_size = Vector2(102, 0)
+layout_mode = 2
+
+[node name="Deck" parent="CanvasLayer/Down" instance=ExtResource("2_u5opy")]
+
+[node name="WindowField" parent="CanvasLayer/Down/Deck" index="0"]
+offset_left = 160.0
+offset_top = 392.0
+offset_right = 300.0
+offset_bottom = 582.0
+scale = Vector2(0.75, 0.75)
+
+[node name="Window" parent="CanvasLayer/Down/Deck" index="1"]
+offset_left = 258.0
+offset_top = -162.0
+offset_right = 1458.0
+offset_bottom = 138.0
+popup_rect = Rect2(258, 378, 1200, 300)
+
+[node name="HiddenField" parent="CanvasLayer/Down/Deck/Window" index="2"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 195.0
+offset_bottom = 195.0
+
+[node name="Stack" parent="CanvasLayer" instance=ExtResource("4_4fuuu")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_top = -391.0
+offset_right = 150.0
+offset_bottom = 387.0
+
+[node name="CollisionShape2D" parent="CanvasLayer/Stack/CardDropAreaRight" index="0"]
+position = Vector2(0, 269)
+
+[node name="CollisionShape2D" parent="CanvasLayer/Stack/CardDropAreaLeft" index="0"]
+position = Vector2(0, 91.25)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://3trgkf0u68ry", "uid://7na8cgol2fvl")
+spawn_path = NodePath("../CanvasLayer")
+spawn_limit = 1
+
+[connection signal="pressed" from="CanvasLayer/Up/ControlButton" to="." method="_on_take_control_top"]
+[connection signal="pressed" from="CanvasLayer/Down/ControlButton" to="." method="_on_take_control_down"]
+
+[editable path="CanvasLayer/Up/Hand"]
+[editable path="CanvasLayer/Up/Deck"]
+[editable path="CanvasLayer/Up/Deck/Window/HiddenField"]
+[editable path="CanvasLayer/Down/Hand"]
+[editable path="CanvasLayer/Down/Deck"]
+[editable path="CanvasLayer/Down/Deck/Window/HiddenField"]
+[editable path="CanvasLayer/Stack"]

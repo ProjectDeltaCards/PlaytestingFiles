@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://6iq8o8lgw4sw"]
+
+[ext_resource type="PackedScene" uid="uid://biim2lxri0akl" path="res://game/field/field.tscn" id="1_0deal"]
+[ext_resource type="Script" uid="uid://c70gwcog73u6s" path="res://game/slot/slot.gd" id="2_18u5n"]
+[ext_resource type="Texture2D" uid="uid://c7bn5cqqmx2xj" path="res://textures/CardSlot.png" id="2_yihvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8ifn"]
+size = Vector2(97, 91)
+
+[node name="Slot" instance=ExtResource("1_0deal")]
+anchor_right = 0.0868056
+script = ExtResource("2_18u5n")
+
+[node name="CardSlot" type="Sprite2D" parent="." index="0"]
+position = Vector2(51, 75)
+scale = Vector2(0.561111, 0.561111)
+texture = ExtResource("2_yihvg")
+
+[node name="Panel" parent="." index="1"]
+visible = false
+
+[node name="CardDropAreaRight" parent="." index="4"]
+visible = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="CardDropAreaRight" index="0"]
+visible = false
+
+[node name="CardDropAreaLeft" parent="." index="5"]
+position = Vector2(51, 74.5)
+
+[node name="CollisionShape2D" parent="CardDropAreaLeft" index="0"]
+shape = SubResource("RectangleShape2D_x8ifn")
