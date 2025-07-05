@@ -11,7 +11,7 @@ offset_bottom = 1057.0
 
 [node name="SheetsData" type="Node" parent="."]
 script = ExtResource("1_b0vp8")
-sheets = PackedStringArray("res://databases/Set 0 - Civilians.csv", "res://databases/Set 1 - Sara.csv", "res://databases/Set 2 - Hana.csv", "res://databases/Set 3 - Namibia.csv", "res://databases/Set 4 - Enigma.csv", "res://databases/Set 5 - Locio.csv", "res://databases/Set 6 - Axel.csv", "res://databases/Set 7 - Lexi.csv", "res://databases/Set 8 - Skynet.csv", "res://databases/Set 9 - Mao.csv")
+sheets = PackedStringArray("res://databases/Set 0 - Civilians.csv", "res://databases/Set 1 - Naama.csv", "res://databases/Set 2 - Namibia.csv", "res://databases/Set 3 - Sara.csv", "res://databases/Set 4 - Hana.csv", "res://databases/Set 5 - Locio.csv", "res://databases/Set 6 - Axel.csv", "res://databases/Set 7 - Lexi.csv", "res://databases/Set 8 - Skynet.csv", "res://databases/Set 9 - Kit.csv")
 
 [node name="Card" parent="." node_paths=PackedStringArray("sheetsData") instance=ExtResource("2_l1w7m")]
 sheetsData = NodePath("../SheetsData")
